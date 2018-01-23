@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.1)
+project (Pattern)
+file (GLOB pattern_src "src/*.cpp")
+include_directories ( include ../DHHLib/include)
+add_library (Pattern SHARED ${pattern_src})
+#target_link_libraries (Pattern)
