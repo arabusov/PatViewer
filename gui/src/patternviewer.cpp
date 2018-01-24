@@ -101,7 +101,8 @@ void ImageViewer::save()
     QString fileName = QFileDialog::getSaveFileName(this,
                                     tr("Save File"), QDir::currentPath(),
                                     tr("Image files (*.bmp, *.png, *.xpm)"));
-    image->save (fileName);
+    if (!fileName.isEmpty())
+      image->save (fileName);
 }
 
 void ImageViewer::print()
@@ -232,7 +233,7 @@ void ImageViewer::scaleImage(double factor)
     adjustScrollBar(scrollArea->horizontalScrollBar(), factor);
     adjustScrollBar(scrollArea->verticalScrollBar(), factor);
 
-    zoomInAct->setEnabled(scaleFactor < 3.0);
+    zoomInAct->setEnabled(scaleFactor < 10.0);
     zoomOutAct->setEnabled(scaleFactor > 0.333);
 }
 
